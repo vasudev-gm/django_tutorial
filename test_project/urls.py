@@ -21,6 +21,7 @@ from django.contrib.auth.models import User
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from rest_framework import routers, serializers, viewsets
 from apidemo import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -49,3 +50,4 @@ urlpatterns = [
     path('apidocs_swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('apidocs_redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
+urlpatterns+= staticfiles_urlpatterns()
