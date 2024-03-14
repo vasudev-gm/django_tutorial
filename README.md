@@ -1,7 +1,7 @@
 # django_tutorial using DRF and DRF Spectacular OpenAPI
 Django DRF with SQLite
 Basic CRUD API for Employees and Department using Django DRF.
-Deployed using Gunicorn
+Deployed using Gunicorn Server
 
 # Docker Compose Commands
 
