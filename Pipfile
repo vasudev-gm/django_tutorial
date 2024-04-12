@@ -10,6 +10,7 @@ drf-spectacular-sidecar = "*"
 python-dotenv = "*"
 gunicorn = "*"
 drf-spectacular = "*"
+faker = "*"
 
 [dev-packages]
 
