@@ -61,21 +61,21 @@
         },
         "drf-spectacular-sidecar": {
             "hashes": [
-                "sha256:089fdef46b520b7b1c8a497a398cde9336c3f20b115835baeb158dc4138d743d",
-                "sha256:1ecfbe86174461e3cf78a9cd49f69aa8d9e0710cb5e8b35107d3f8cc0f380c21"
+                "sha256:5ad678c788dcb36697a668884c6fdac2c511a4094cb010978bd01a6345197bbb",
+                "sha256:eed744c26d2caff815fd67d89eca685f645479f07fb86c124d8ee26a13b1d960"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.6'",
-            "version": "==2024.5.1"
+            "version": "==2024.6.1"
         },
         "faker": {
             "hashes": [
-                "sha256:45b84f47ff1ef86e3d1a8d11583ca871ecf6730fad0660edadc02576583a2423",
-                "sha256:cfe97c4857c4c36ee32ea4aaabef884895992e209bae4cbd26807cf3e05c6918"
+                "sha256:0158d47e955b6ec22134c0a74ebb7ed34fe600896208bafbf1008db831b17f04",
+                "sha256:bcbe31eee5ef4bbf87ce36c4eba53c01e2a1d912fde2a4d3528b430d2beb784f"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.8'",
-            "version": "==25.2.0"
+            "version": "==25.3.0"
         },
         "gunicorn": {
             "hashes": [
