@@ -30,7 +30,7 @@ load_environ = load_dotenv(encoding="utf-8", override=True, interpolate=True)
 # "Environment Variables not loaded!". This is done to ensure that the application does not continue
 # running without the necessary environment variables.
 if not load_environ:
-    raise "Environment Variables not loaded!"
+    raise "Environment Variables not loaded!" # type: ignore
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
