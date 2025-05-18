@@ -11,7 +11,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     API endpoint that allows employees to be viewed or edited.
     Supports filtering, searching, ordering, and pagination.
     """
-    queryset = Employee.objects.all()
+    queryset = Employee.objects.all().order_by("id")
     serializer_class = EmployeeSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ["first_name", "last_name", "department__title"]
@@ -25,7 +25,7 @@ class DeptViewSet(viewsets.ModelViewSet):
     API endpoint that allows departments to be viewed or edited.
     Supports searching, ordering, and pagination.
     """
-    queryset = Department.objects.all()
+    queryset = Department.objects.all().order_by("id")
     serializer_class = DepartmentSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ["title"]
