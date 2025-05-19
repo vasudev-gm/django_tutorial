@@ -15,8 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-
 from django.urls import path, include
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from rest_framework import routers, serializers, viewsets
@@ -50,4 +50,12 @@ urlpatterns = [
     path('apidocs_swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('apidocs_redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
-urlpatterns+= staticfiles_urlpatterns()
+
+def health_check(request):
+    return HttpResponse("OK")
+
+urlpatterns += [
+    path('health/', health_check, name='health_check'),
+]
+
+urlpatterns += staticfiles_urlpatterns()

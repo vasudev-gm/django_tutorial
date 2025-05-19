@@ -1,54 +1,117 @@
 # syntax=docker/dockerfile:1
 
-# Comments are provided throughout this file to help you get started.
-# If you need more help, visit the Dockerfile reference guide at
-# https://docs.docker.com/go/dockerfile-reference/
-
-# Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
-
+# Arguments that can be overridden
 ARG PYTHON_VERSION=3.12
-FROM python:${PYTHON_VERSION}-slim AS base
+ARG PYTHON_BASE_IMAGE=slim
+ARG APP_USER=appuser
+ARG APP_GROUP=appgroup
+ARG APP_UID=10001
+ARG APP_GID=10001
+ARG APP_ROOT=/app
 
-# Prevents Python from writing pyc files.
-ENV PYTHONDONTWRITEBYTECODE=1
+# Build stage
+FROM python:${PYTHON_VERSION}-${PYTHON_BASE_IMAGE} AS builder
 
-# Keeps Python from buffering stdout and stderr to avoid situations where
-# the application crashes without emitting any logs due to buffering.
-ENV PYTHONUNBUFFERED=1
+# Build arguments
+ARG APP_ROOT
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_DEFAULT_TIMEOUT=100
 
-WORKDIR /app
+WORKDIR ${APP_ROOT}
 
-# Create a non-privileged user that the app will run under.
-# See https://docs.docker.com/go/dockerfile-user-best-practices/
-ARG UID=10001
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/nonexistent" \
-    --shell "/sbin/nologin" \
-    --no-create-home \
-    --uid "${UID}" \
-    appuser
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
-# Download dependencies as a separate step to take advantage of Docker's caching.
-# Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
-# Leverage a bind mount to requirements.txt to avoid having to copy them into
-# into this layer.
+# Install Python dependencies
+COPY requirements*.txt ./
 RUN --mount=type=cache,target=/root/.cache/pip \
-    --mount=type=bind,source=requirements.txt,target=requirements.txt \
-    python -m pip install -r requirements.txt
+    pip wheel --no-deps --wheel-dir wheels -r requirements.txt && \
+    pip install -r requirements.txt
 
-# Switch to the non-privileged user to run the application.
-USER appuser
+# Copy only necessary files for collecting static
+COPY manage.py .
+COPY .env .env
+COPY test_project/ test_project/
+COPY apidemo/ apidemo/
+COPY static/ static/
 
-# Copy the source code into the container.
-COPY . .
+# Collect static files
+RUN python manage.py collectstatic --noinput
 
-# Expose the port that the application listens on.
+# Final stage
+FROM python:${PYTHON_VERSION}-${PYTHON_BASE_IMAGE} AS runtime
+
+# Runtime arguments and environment variables
+ARG APP_USER
+ARG APP_GROUP
+ARG APP_UID
+ARG APP_GID
+ARG APP_ROOT
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    APP_ROOT=${APP_ROOT}
+
+WORKDIR ${APP_ROOT}
+
+# Install runtime dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create app user and group
+RUN groupadd --gid ${APP_GID} ${APP_GROUP} && \
+    useradd --uid ${APP_UID} --gid ${APP_GID} --no-create-home --home-dir /nonexistent \
+    --shell /sbin/nologin --system ${APP_USER}
+
+# Create necessary directories with proper permissions
+RUN mkdir -p ${APP_ROOT}/static ${APP_ROOT}/media /var/run/django && \
+    chown -R ${APP_USER}:${APP_GROUP} ${APP_ROOT} /var/run/django
+
+# Copy wheels and install dependencies
+COPY --from=builder ${APP_ROOT}/wheels /wheels
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install --no-cache-dir /wheels/*
+
+# Copy application code and static files
+COPY --chown=${APP_USER}:${APP_GROUP} . .
+COPY --from=builder --chown=${APP_USER}:${APP_GROUP} ${APP_ROOT}/static ${APP_ROOT}/static
+
+# Copy and set up entrypoint
+COPY --chown=${APP_USER}:${APP_GROUP} docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Set up health check
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 --start-period=30s \
+    CMD curl -f http://localhost:8000/health/ || exit 1
+
+# Set default environment variables for Gunicorn
+ENV GUNICORN_WORKERS=4 \
+    GUNICORN_THREADS=2 \
+    GUNICORN_WORKER_CLASS=gthread \
+    GUNICORN_MAX_REQUESTS=1000 \
+    GUNICORN_MAX_REQUESTS_JITTER=50
+
+# Switch to non-privileged user
+USER ${APP_USER}:${APP_GROUP}
+
 EXPOSE 8000
 
-
-# Run the application.
-# Test application
-# RUN python test_project/manage.py makemigrations && python test_project/manage.py migrate
-CMD ["gunicorn", "--workers=2", "test_project.wsgi", "--bind", "0.0.0.0:8000"]
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD gunicorn \
+    --workers=${GUNICORN_WORKERS} \
+    --threads=${GUNICORN_THREADS} \
+    --worker-class=${GUNICORN_WORKER_CLASS} \
+    --bind=0.0.0.0:8000 \
+    --max-requests=${GUNICORN_MAX_REQUESTS} \
+    --max-requests-jitter=${GUNICORN_MAX_REQUESTS_JITTER} \
+    test_project.wsgi:application
