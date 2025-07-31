@@ -18,11 +18,11 @@
     "default": {
         "asgiref": {
             "hashes": [
-                "sha256:06a41250a0114d2b6f6a2cb3ab962147d355b53d1de15eebc34a9d04a7b79981",
-                "sha256:3dd2556d0f08c4fab8a010d9ab05ef8c34565f6bf32381d17505f7ca5b273767"
+                "sha256:a5ab6582236218e5ef1648f242fd9f10626cfd4de8dc377db215d5d5098e3142",
+                "sha256:f3bba7092a48005b5f5bacd747d36ee4a5a61f4a269a6df590b43144355ebd2c"
             ],
             "markers": "python_version >= '3.9'",
-            "version": "==3.9.0"
+            "version": "==3.9.1"
         },
         "attrs": {
             "hashes": [
@@ -70,12 +70,12 @@
         },
         "faker": {
             "hashes": [
-                "sha256:7f69d579588c23d5ce671f3fa872654ede0e67047820255f43a4aa1925b89780",
-                "sha256:cb81c09ebe06c32a10971d1bbdb264bb0e22b59af59548f011ac4809556ce533"
+                "sha256:386fe9d5e6132a915984bf887fcebcc72d6366a25dd5952905b31b141a17016d",
+                "sha256:8315d8ff4d6f4f588bd42ffe63abd599886c785073e26a44707e10eeba5713dc"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.9'",
-            "version": "==37.4.0"
+            "version": "==37.5.3"
         },
         "gunicorn": {
             "hashes": [
@@ -96,11 +96,11 @@
         },
         "jsonschema": {
             "hashes": [
-                "sha256:0b4e8069eb12aedfa881333004bccaec24ecef5a8a6a4b6df142b2cc9599d196",
-                "sha256:a462455f19f5faf404a7902952b6f0e3ce868f3ee09a359b05eca6673bd8412d"
+                "sha256:24c2e8da302de79c8b9382fee3e76b355e44d2a4364bb207159ce10b517bd716",
+                "sha256:e63acf5c11762c0e6672ffb61482bdf57f0876684d8d249c0fe2d730d48bc55f"
             ],
             "markers": "python_version >= '3.9'",
-            "version": "==4.24.0"
+            "version": "==4.25.0"
         },
         "jsonschema-specifications": {
             "hashes": [
