@@ -22,7 +22,7 @@ dependencies = [
     "python-dotenv==1.1.1 ; python_full_version >= '3.9'",
     "pyyaml==6.0.2 ; python_full_version >= '3.8'",
     "referencing==0.36.2 ; python_full_version >= '3.9'",
-    "rpds-py==0.26.0 ; python_full_version >= '3.9'",
+    "rpds-py==0.27.0 ; python_full_version >= '3.9'",
     "six==1.17.0 ; python_full_version >= '2.7'",
     "sqlparse==0.5.3 ; python_full_version >= '3.8'",
     "typing-extensions==4.14.1 ; python_full_version >= '3.9'",
