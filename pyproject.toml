@@ -24,7 +24,7 @@ dependencies = [
     "rpds-py==0.27.0 ; python_full_version >= '3.9'",
     "six==1.17.0 ; python_full_version >= '2.7'",
     "sqlparse==0.5.3 ; python_full_version >= '3.8'",
-    "typing-extensions==4.14.1 ; python_full_version >= '3.9'",
+    "typing-extensions==4.15.0 ; python_full_version >= '3.9'",
     "tzdata==2025.2 ; python_full_version >= '2'",
     "uritemplate==4.2.0 ; python_full_version >= '3.9'",
 ]
