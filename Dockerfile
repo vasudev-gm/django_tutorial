@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Arguments that can be overridden
-ARG PYTHON_VERSION=3.12
+ARG PYTHON_VERSION=3.13
 ARG PYTHON_BASE_IMAGE=slim
 ARG APP_USER=appuser
 ARG APP_GROUP=appgroup
