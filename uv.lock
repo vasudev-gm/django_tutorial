@@ -70,7 +70,7 @@ requires-dist = [
     { name = "django", marker = "python_full_version >= '3.10'", specifier = "==5.2.5" },
     { name = "djangorestframework", marker = "python_full_version >= '3.9'", specifier = "==3.16.1" },
     { name = "drf-spectacular", marker = "python_full_version >= '3.7'", specifier = "==0.28.0" },
-    { name = "drf-spectacular-sidecar", marker = "python_full_version >= '3.6'", specifier = "==2025.8.1" },
+    { name = "drf-spectacular-sidecar", marker = "python_full_version >= '3.6'", specifier = "==2025.9.1" },
     { name = "faker", marker = "python_full_version >= '3.9'", specifier = "==37.5.3" },
     { name = "gunicorn", marker = "python_full_version >= '3.7'", specifier = "==23.0.0" },
     { name = "inflection", marker = "python_full_version >= '3.5'", specifier = "==0.5.1" },
@@ -120,14 +120,14 @@ wheels = [
 
 [[package]]
 name = "drf-spectacular-sidecar"
-version = "2025.8.1"
+version = "2025.9.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a9/f7/0cb2f520723f1823ef7b6651d447927f61ba92d152a5d68132599b90624f/drf_spectacular_sidecar-2025.8.1.tar.gz", hash = "sha256:1944ae0eb5136cff5aa135211bec31084cef1af03a04de9b7f2f912b3c59c251", size = 2407787, upload-time = "2025-08-01T11:28:01.319Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/51/e2/85a0b8dbed8631165a6b49b2aee57636da8e4e710c444566636ffd972a7b/drf_spectacular_sidecar-2025.9.1.tar.gz", hash = "sha256:da2aa45da48fff76de7a1e357b84d1eb0b9df40ca89ec19d5fe94ad1037bb3c8", size = 2420902, upload-time = "2025-09-01T11:23:24.156Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/1f/3b/0fcdc6eb294a11ed6e3ddc02fc29968bf403d3ce31645764eedfc91f87a6/drf_spectacular_sidecar-2025.8.1-py3-none-any.whl", hash = "sha256:c65a2a423000cc067395150b4dc28e7398a762d66ee101c4c38a4fb0d29a42a2", size = 2427849, upload-time = "2025-08-01T11:27:59.648Z" },
+    { url = "https://files.pythonhosted.org/packages/96/24/db59146ba89491fe1d44ca8aef239c94bf3c7fd41523976090f099430312/drf_spectacular_sidecar-2025.9.1-py3-none-any.whl", hash = "sha256:8e80625209b8a23ff27616db305b9ab71c2e2d1069dacd99720a9c11e429af50", size = 2440255, upload-time = "2025-09-01T11:23:22.822Z" },
 ]
 
 [[package]]
