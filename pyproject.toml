@@ -50,3 +50,6 @@ dependencies = [
     "uritemplate==4.2.0",
     "uritemplate==4.2.0 ; python_full_version >= '3.9'",
 ]
+
+[tool.uv]
+link-mode = "copy"
