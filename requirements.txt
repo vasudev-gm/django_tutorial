@@ -31,9 +31,9 @@ drf-spectacular==0.29.0 \
     --hash=sha256:0a069339ea390ce7f14a75e8b5af4a0860a46e833fd4af027411a3e94fc1a0cc \
     --hash=sha256:d1ee7c9535d89848affb4427347f7c4a22c5d22530b8842ef133d7b72e19b41a
     # via django-rest-framework
-drf-spectacular-sidecar==2025.10.1 \
-    --hash=sha256:506a5a21ce1ad7211c28acb4e2112e213f6dc095a2052ee6ed6db1ffe8eb5a7b \
-    --hash=sha256:f1de343184d1a938179ce363d318258fe1e5f02f2f774625272364835f1c42bd
+drf-spectacular-sidecar==2025.12.1 \
+    --hash=sha256:d25d82ea2e6176ce4583812f73ac9f177dcd56141c11a9e9bf35f1b1878d5044 \
+    --hash=sha256:dd28870327b92a0e3c9b6809147fd3e74ec449176daeae291af34eda176236c1
     # via django-rest-framework
 faker==38.2.0 \
     --hash=sha256:20672803db9c7cb97f9b56c18c54b915b6f1d8991f63d1d673642dc43f5ce7ab \
