@@ -1,6 +1,6 @@
 [project]
 name = "django-rest-framework"
-version = "1.0.0"
+version = "1.1.0"
 description = "A Django REST framework for building APIs"
 readme = "README.md"
 requires-python = ">=3.12"
