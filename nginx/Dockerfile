@@ -1,4 +1,4 @@
-FROM nginx:1.25.4-alpine
+FROM nginx:latest
 
 # Install required packages
 RUN apk add --no-cache \
