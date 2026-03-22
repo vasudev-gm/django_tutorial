@@ -118,8 +118,22 @@ For local development without Docker:
 # Install pipenv if you haven't already
 pip install --user pipenv
 
-# Install dependencies using Pipenv
+# Install dependencies using Pipenv or uv
 pipenv install
+
+## UV commands to setup environment and run the project
+
+> uv venv -p 3.13 --python-preference managed
+> uv sync
+
+## UV command to upgrade python and packages
+
+> uv python upgrade
+> uv sync --upgrade
+
+## UV export to requirements.txt
+
+> uv export --format=requirements.txt --all-packages > .\requirements.txt
 
 # Activate the virtual environment
 pipenv shell
@@ -145,9 +159,11 @@ pipenv update
 
 # Generate requirements.txt (for Docker build)
 pipenv requirements > requirements.txt
+OR
+uv export --format=requirements.txt --all-packages > .\requirements.txt
 
 # Check security vulnerabilities
 pipenv check
 ```
 
-The project uses Pipfile and Pipfile.lock for dependency management, ensuring consistent environments across development machines.
+The project uses pyproject.toml, Pipfile and Pipfile.lock for dependency management, ensuring consistent environments across development machines.
