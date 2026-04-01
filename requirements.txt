@@ -31,13 +31,13 @@ drf-spectacular==0.29.0 \
     --hash=sha256:0a069339ea390ce7f14a75e8b5af4a0860a46e833fd4af027411a3e94fc1a0cc \
     --hash=sha256:d1ee7c9535d89848affb4427347f7c4a22c5d22530b8842ef133d7b72e19b41a
     # via django-rest-framework
-drf-spectacular-sidecar==2026.3.1 \
-    --hash=sha256:5b7fedad66e3851f2f442480792c08115d79217959d01645b93d3d2258938be1 \
-    --hash=sha256:864edb83e022e13e3941c325c3cc0c954c843fa2e1d0bc95e81887664b2d3dad
+drf-spectacular-sidecar==2026.4.1 \
+    --hash=sha256:2ccd2ec2faa7ecbca566f04b13cd2ce2f8558d697efcce25be013730063e11dd \
+    --hash=sha256:c72cd012e82414c6cc66f442670b9173af81138f1321fb27e8799b49ecdfeaad
     # via django-rest-framework
-faker==40.11.1 \
-    --hash=sha256:3af3a213ba8fb33ce6ba2af7aef2ac91363dae35d0cec0b2b0337d189e5bee2a \
-    --hash=sha256:61965046e79e8cfde4337d243eac04c0d31481a7c010033141103b43f603100c
+faker==40.12.0 \
+    --hash=sha256:58b5a9054c367bd5fb2e948634105364cc570e78a98a8e5161a74691c45f158f \
+    --hash=sha256:6238a4058a8b581892e3d78fe5fdfa7568739e1c8283e4ede83f1dde0bfc1a3b
     # via django-rest-framework
 gunicorn==25.3.0 \
     --hash=sha256:cacea387dab08cd6776501621c295a904fe8e3b7aae9a1a3cbb26f4e7ed54660 \
