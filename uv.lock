@@ -36,7 +36,7 @@ wheels = [
 
 [[package]]
 name = "django-rest-framework"
-version = "1.5.7"
+version = "1.5.8"
 source = { virtual = "." }
 dependencies = [
     { name = "asgiref" },
@@ -120,14 +120,14 @@ wheels = [
 
 [[package]]
 name = "drf-spectacular-sidecar"
-version = "2026.4.1"
+version = "2026.4.14"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/77/f3/c0b9a96714352ff3ebc25745d437f43b5aa8864ed06fa59863a9c2c03da0/drf_spectacular_sidecar-2026.4.1.tar.gz", hash = "sha256:2ccd2ec2faa7ecbca566f04b13cd2ce2f8558d697efcce25be013730063e11dd", size = 2462221, upload-time = "2026-04-01T11:58:27.387Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ef/0a/6dcc9cf1a60fa4247b886e9d4249ea7d04e67fede20af6fd631ef74c84a0/drf_spectacular_sidecar-2026.4.14.tar.gz", hash = "sha256:d4c299a85f3be44e93eaff3d83e986f27b744bb9823ba034aff9fd267ebc9fea", size = 2466204, upload-time = "2026-04-14T16:06:46.818Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/96/ea/f662846e1d75ff17fa749a74257d8aba0fe6992bf04bd6f0a87ba9b51971/drf_spectacular_sidecar-2026.4.1-py3-none-any.whl", hash = "sha256:c72cd012e82414c6cc66f442670b9173af81138f1321fb27e8799b49ecdfeaad", size = 2482483, upload-time = "2026-04-01T11:58:25.648Z" },
+    { url = "https://files.pythonhosted.org/packages/42/e7/23cb71e9348af587c2d34d6e548e0f02af21432cdf50afabf379d5649ee8/drf_spectacular_sidecar-2026.4.14-py3-none-any.whl", hash = "sha256:a040d360ada2592722e90f40c2cf744376d9a30cccb3caaa5423bad791dec0aa", size = 2488555, upload-time = "2026-04-14T16:06:45.097Z" },
 ]
 
 [[package]]
