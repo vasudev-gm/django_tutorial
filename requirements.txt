@@ -35,9 +35,9 @@ drf-spectacular-sidecar==2026.6.1 \
     --hash=sha256:4560572773c7e5f636d36cd2903204e2c59560af0548da254e311f94458c51a2 \
     --hash=sha256:e159874fa85ccee39b801e260f2a3585fbe36a0c79bf811824eef9010ab98ea9
     # via django-rest-framework
-faker==40.20.0 \
-    --hash=sha256:0305002eb7441dbbc774b48ec95f4794188fcedf1f4697d205cb59a38db8d6ee \
-    --hash=sha256:d66c65751b70e179515c163bfb3e3fb89139395bb9f0eb78bfdf8c6c81aa9c8c
+faker==40.21.0 \
+    --hash=sha256:2fdee1b650a723a54432db9c6dfe17cfa29d1adc8bd60520444a07698524ba4d \
+    --hash=sha256:cb6601b2ae8e128895dc96814d271eab6b930a2d2d7932c6f9ff26785c24ee18
     # via django-rest-framework
 gunicorn==26.0.0 \
     --hash=sha256:40233d26a5f0d1872916188c276e21641155111c2853f0c2cd55260aec0d24fc \
