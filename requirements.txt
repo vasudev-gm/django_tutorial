@@ -27,9 +27,9 @@ djangorestframework==3.17.1 \
     # via
     #   django-rest-framework
     #   drf-spectacular
-drf-spectacular==0.29.0 \
-    --hash=sha256:0a069339ea390ce7f14a75e8b5af4a0860a46e833fd4af027411a3e94fc1a0cc \
-    --hash=sha256:d1ee7c9535d89848affb4427347f7c4a22c5d22530b8842ef133d7b72e19b41a
+drf-spectacular==0.30.0 \
+    --hash=sha256:006cf5921ebe20a9bd24f7c846261ebbf78780be5961b0d6e87afaa82afd62ff \
+    --hash=sha256:53e79e7ba00e240441b63c32273754a5368e4c2ab44a19f2595277cc1cd559c9
     # via django-rest-framework
 drf-spectacular-sidecar==2026.6.1 \
     --hash=sha256:4560572773c7e5f636d36cd2903204e2c59560af0548da254e311f94458c51a2 \
