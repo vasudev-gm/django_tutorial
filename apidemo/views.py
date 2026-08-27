@@ -1,7 +1,7 @@
 from rest_framework import viewsets, filters
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from apidemo.serializers import EmployeeSerializer, DepartmentSerializer
-from apidemo.models import Employee,Department
+from apidemo.models import Employee, Department
 # Create your views here.
 
 
