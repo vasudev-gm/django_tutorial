@@ -1,11 +1,11 @@
 # Django Tutorial using DRF and DRF Spectacular OpenAPI
 
-Django DRF with SQLite, NGINX load balancing, and production-grade deployment setup.
+Django DRF with SQLite, Angie load balancing, and production-grade deployment setup.
 
 Features:
 
 - Basic CRUD API for Employees and Department using Django DRF
-- Load balanced using NGINX
+- Load balanced using Angie
 - Deployed using Gunicorn Server
 - Multi-stage Docker builds for optimized images
 - Zstandard and Gzip compression
@@ -13,15 +13,21 @@ Features:
 
 ## Architecture
 
-- NGINX load balancer with 2 Django application replicas
+- Angie load balancer with 2 Django application replicas
+- Automatic Let's Encrypt certificates for `api.example.com`, with HTTP redirected to HTTPS
 - Gunicorn as the WSGI server
-- Static files served by NGINX
+- Static files served by Angie
 - Health monitoring and automatic failover
 - Session persistence using IP hash
 
 ## Docker Compose Commands
 
 ### Build and Run
+
+Before starting, point `api.example.com` to the Docker host and allow inbound
+ports 80 and 443 through your firewall. Angie requests and renews the
+certificate automatically; the `angie_acme` volume preserves certificates and
+ACME account data across container recreation.
 
 ```powershell
 # Enable BuildKit for optimized builds
@@ -34,6 +40,21 @@ docker compose up --build -d
 docker compose up -d --scale web=2
 ```
 
+### Local HTTP Development
+
+For local access without a public domain or Let's Encrypt certificate, use the
+local Compose override. It serves the Angie proxy over HTTP and publishes the
+Django app directly on port 8000:
+
+```powershell
+docker compose -f compose.yaml -f compose.local.yaml up --build -d
+```
+
+Then open `http://localhost/` through Angie, `http://localhost:8000/` directly,
+or the Angie Console Light monitoring page at `http://localhost/console/`.
+The local Angie listener is bound to loopback; use this command form for
+subsequent Compose operations on the local stack too.
+
 ### Container Management
 
 ```powershell
@@ -42,7 +63,7 @@ docker compose ps
 
 # View logs for specific service
 docker compose logs -f web    # Django app logs
-docker compose logs -f nginx  # NGINX logs
+docker compose logs -f angie  # Angie logs
 
 # Execute commands in container
 docker compose exec web python manage.py migrate
@@ -56,10 +77,10 @@ docker compose logs --timestamps --tail=100
 
 ```powershell
 # Check health endpoint
-curl http://localhost/health/
+curl https://api.example.com/health/
 
-# Check NGINX status
-docker compose exec nginx nginx -t
+# Check Angie status
+docker compose exec angie angie -t
 
 # View real-time container stats
 docker compose top
@@ -86,14 +107,15 @@ docker stats
 - `GUNICORN_THREADS`: Threads per worker (default: 2)
 - `GUNICORN_MAX_REQUESTS`: Max requests per worker (default: 1000)
 
-### NGINX Features
+### Angie Features
 
-- Load balancing (least connections + IP hash)
+- Load balancing with IP-based session affinity
 - Zstandard and Gzip compression
 - Static file serving
 - Health checks
 - Rate limiting
 - Security headers
+- Automatic Let's Encrypt certificate issuance and renewal
 
 ### Security
 
@@ -106,9 +128,9 @@ docker stats
 
 Access the API documentation at these endpoints:
 
-- Swagger UI: [http://localhost/apidocs_swagger/](http://localhost/apidocs_swagger/)
-- ReDoc: [http://localhost/apidocs_redoc/](http://localhost/apidocs_redoc/)
-- OpenAPI Schema: [http://localhost/apidocs/](http://localhost/apidocs/)
+- Swagger UI: [https://api.example.com/apidocs_swagger/](https://api.example.com/apidocs_swagger/)
+- ReDoc: [https://api.example.com/apidocs_redoc/](https://api.example.com/apidocs_redoc/)
+- OpenAPI Schema: [https://api.example.com/apidocs/](https://api.example.com/apidocs/)
 
 ## Development
 

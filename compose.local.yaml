@@ -1,0 +1,12 @@
+services:
+  angie:
+    ports: !override
+      - "127.0.0.1:80:80"
+    volumes:
+      - ./angie/angie.local.conf:/etc/angie/angie.conf:ro
+
+  web:
+    deploy:
+      replicas: 1
+    ports:
+      - "8000:8000"
